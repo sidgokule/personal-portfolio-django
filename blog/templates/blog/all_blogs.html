@@ -1,0 +1,18 @@
+{% extends 'portfolio/base.html' %}
+{% block content %}
+
+    <h1>Welcome to blogs by SIDDHANT</h1>
+
+    <h2>Total blog{{ blogs.count|pluralize }} to date: {{ blogs.count }}</h2>
+
+    {% for b in blogs %}
+
+    <a href="{% url 'blog:detail' b.id %}"><h2>{{ b.title }}</h2></a>
+    <br>
+    <h4>{{ b.date|date:'M d Y'|upper }}</h4>
+    <p>{{ b.description|striptags|truncatechars:100}}</p>
+
+    {% endfor %}
+
+
+{% endblock %}
